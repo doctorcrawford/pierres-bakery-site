@@ -1,24 +1,29 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Item from "./Item";
-import NewItemForm from "./NewItemForm";
 
 function ItemList(props) {
   return (
     <>
       <h3>Goodies for Sale</h3>
-      {props.itemList.map((item, index) =>
-      <Item name={item.name}
-        description={item.description}
-        quantity={item.quantity}
-        key={index} />
-      )}
+      <ul>
+        <li>{props.itemList.map((item, index) =>
+          <Item
+            whenItemClicked={props.onItemSelection}
+            name={item.name}
+            description={item.description}
+            quantity={item.quantity}
+            id={item.id}
+            key={item.id} />
+        )}</li>
+      </ul>
     </>
   );
 }
 
 ItemList.propTypes = {
-  itemList: PropTypes.array
+  itemList: PropTypes.array,
+  onItemSelection: PropTypes.func
 };
 
 export default ItemList;

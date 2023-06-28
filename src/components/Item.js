@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function Item(props) {
   return (
     <>
-      <p><em>{props.name}</em></p>
-      <p>{props.description}</p>
-      <p>{props.quantity}</p>
+      <div onClick={() => props.whenItemClicked(props.id)}>
+        <p><em>{props.name}</em></p>
+        {/* <p>{props.description}</p>
+        <p>{props.quantity}</p> */}
+      </div>
     </>
   );
 }
@@ -14,7 +17,9 @@ function Item(props) {
 Item.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  quantity: PropTypes.number
+  quantity: PropTypes.number,
+  id: PropTypes.string,
+  whenItemClicked: PropTypes.func
 }
 
 export default Item;
