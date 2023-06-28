@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
+import ReusableForm from "./ReusableForm";
 
 function NewItemForm(props) {
 
@@ -16,21 +17,9 @@ function NewItemForm(props) {
   
   return (
     <>
-      <form onSubmit={handleNewItemFormSubmission}>
-        <input
-          type='text'
-          name='name'
-          placeholder='Item Name' />
-          <input
-            type='text'
-            name='description'
-            placeholder="Description" />
-          <input
-            type='text'
-            name='quantity'
-            placeholder="Quantity" />
-          <button type="submit">Add New Item</button>
-      </form>
+      <ReusableForm
+        formSubmissionHandler={handleNewItemFormSubmission}
+        buttonText='Add New Item' />
     </>
   );
 }

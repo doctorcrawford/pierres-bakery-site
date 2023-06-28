@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-function ItemDetail(props){
+function ItemDetail(props) {
   const { item, onClickingDelete } = props;
   return (
     <>
@@ -9,6 +9,7 @@ function ItemDetail(props){
       <h3>{item.name}</h3>
       <p><em>{item.description}</em></p>
       <p>Quantity: {item.quantity}</p>
+      <button onClick={ props.onClickingEdit }>Edit Item </button>
       <button onClick={() => onClickingDelete(item.id)}>Delete Item</button>
     </>
   );
@@ -16,7 +17,8 @@ function ItemDetail(props){
 
 ItemDetail.propTypes = {
   item: PropTypes.object,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default ItemDetail;
