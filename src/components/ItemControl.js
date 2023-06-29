@@ -52,7 +52,6 @@ class ItemControl extends React.Component {
   }
 
   handleEditClick = () => {
-    console.log('handleEditClick reached!');
     this.setState({ editing: true });
   }
 
@@ -67,6 +66,30 @@ class ItemControl extends React.Component {
     });
   }
 
+  handleBuyItem = () => {
+    const buyItem = this.state.mainItemList
+      .filter(item => item.id === this.state.selectedItem.id)[0];
+      buyItem.quantity--;
+    const editedMainItemList = this.state.mainItemList
+      .filter(item => item.id !== this.state.selectedItem.id)
+      .concat(buyItem);
+    this.setState({
+      mainItemList: editedMainItemList
+    });
+  }
+
+  handleRestockItem = () => {
+    const restockItem = this.state.mainItemList
+      .filter(item => item.id === this.state.selectedItem.id)[0];
+      restockItem.quantity++;
+    const editedMainItemList = this.state.mainItemList
+      .filter(item => item.id !== this.state.selectedItem.id)
+      .concat(restockItem);
+    this.setState({
+      mainItemList: editedMainItemList
+    });
+  }
+
 
 
   render() {
@@ -78,7 +101,7 @@ class ItemControl extends React.Component {
       buttonText = 'Return to Item List';
     }
     else if (this.state.selectedItem != null) {
-      currentlyVisibleState = <ItemDetail item={this.state.selectedItem} onClickingDelete={this.handleDeletingItem} onClickingEdit={this.handleEditClick} />
+      currentlyVisibleState = <ItemDetail item={this.state.selectedItem} onClickingDelete={this.handleDeletingItem} onClickingEdit={this.handleEditClick} onClickingBuy={this.handleBuyItem} onClickingRestock={this.handleRestockItem}/>
       buttonText = "Return to Item List"
     }
     else if (this.state.formVisibleOnPage) {
