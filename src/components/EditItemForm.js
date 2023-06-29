@@ -7,7 +7,7 @@ function EditItemForm(props) {
 
   function handleEditItemFormSubmission(e) {
     e.preventDefault();
-    props.onEditItem({ name: e.target.name.value, description: e.target.description.value, quantity: e.target.quantity.value, id: item.id });
+    props.onEditItem({ name: e.target.name.value, description: e.target.description.value, price: e.target.price.value, quantity: e.target.quantity.value, id: item.id });
   }
 
   return (

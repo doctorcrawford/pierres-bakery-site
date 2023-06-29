@@ -14,6 +14,12 @@ function ReusableForm(props) {
           name='description'
           placeholder="Description" />
         <input
+          type='number'
+          step='0.01'
+          min='0.00'
+          name='price'
+          placeholder="0.00" />
+        <input
           type='text'
           name='quantity'
           placeholder="Quantity" />

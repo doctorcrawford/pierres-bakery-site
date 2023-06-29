@@ -10,6 +10,7 @@ function NewItemForm(props) {
     props.onNewItemCreation({
       name: e.target.name.value,
       description: e.target.description.value,
+      price: e.target.price.value,
       quantity: parseInt(e.target.quantity.value),
       id: v4()
     })
